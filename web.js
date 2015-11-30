@@ -76,8 +76,8 @@ app.route(/^\/[0-9A-Za-z-]+\/[0-9a-f]+\/raw\/?/)
         middleware.accessControl
     )
     .get(
-        middleware.fileRedirect(config.gistDomain || 'https://gist.githubusercontent.com'),
-        middleware.proxyPath(config.gistDomain || 'https://gist.githubusercontent.com')
+        middleware.fileRedirect(config.baseGistUrl),
+        middleware.proxyPath(config.baseGistUrl)
     );
 
 // Repo file.
@@ -91,8 +91,8 @@ app.route('/:user/:repo/:branch/*')
         middleware.accessControl
     )
     .get(
-        middleware.fileRedirect(config.rawGitDomain || 'https://raw.githubusercontent.com'),
-        middleware.proxyPath(config.rawGitDomain || 'https://raw.githubusercontent.com')
+        middleware.fileRedirect(config.baseRepoUrl),
+        middleware.proxyPath(config.baseRepoUrl)
     );
 
 // Stats API.
